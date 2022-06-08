@@ -1,24 +1,96 @@
 package com.sofka.hardware.collection;
 
-import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
+import java.util.Objects;
 
-@Data
-@Document(collection = "product")
 public class Product {
-    @Id
-    private String id;
 
     private String name;
 
     private Integer amount;
 
-    private List<String> providers;
+    private List<Provider> providers;
 
     private String description;
 
-    private Integer price;
+    private Long price;
+
+    public Product(String name,
+                   Integer amount,
+                   List<Provider> providers,
+                   String description,
+                   Long price) {
+        this.name = name;
+        this.amount = amount;
+        this.providers = providers;
+        this.description = description;
+        this.price = price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
+    public List<Provider> getProviders() {
+        return providers;
+    }
+
+    public void setProviders(List<Provider> providers) {
+        this.providers = providers;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Long getPrice() {
+        return price;
+    }
+
+    public void setPrice(Long price) {
+        this.price = price;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return name.equals(product.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", amount=" + amount +
+                ", providers=" + providers +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }
