@@ -12,7 +12,7 @@ public class Product {
 
     private Integer amount;
 
-    private List<Provider> providers;
+    private Provider providers;
 
     private String description;
 
@@ -20,7 +20,7 @@ public class Product {
 
     public Product(String name,
                    Integer amount,
-                   List<Provider> providers,
+                   Provider providers,
                    String description,
                    Long price) {
         this.name = name;
@@ -46,11 +46,11 @@ public class Product {
         this.amount = amount;
     }
 
-    public List<Provider> getProviders() {
+    public Provider getProviders() {
         return providers;
     }
 
-    public void setProviders(List<Provider> providers) {
+    public void setProviders(Provider providers) {
         this.providers = providers;
     }
 

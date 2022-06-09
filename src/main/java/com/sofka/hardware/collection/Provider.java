@@ -1,53 +1,21 @@
 package com.sofka.hardware.collection;
 
-import java.util.Objects;
+import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.NotBlank;
+
+@Data
+@Document(collection = "provider")
 public class Provider {
 
+    @Id
     private String idProvider;
-
+    @NotBlank(message="nameProvider cant be blank")
     private String nameProvider;
-
-    public Provider(String idProvider,
-                    String nameProvider) {
-        this.idProvider = idProvider;
-        this.nameProvider = nameProvider;
-    }
-
-    public String getIdProvider() {
-        return idProvider;
-    }
-
-    public void setIdProvider(String idProvider) {
-        this.idProvider = idProvider;
-    }
-
-    public String getNameProvider() {
-        return nameProvider;
-    }
-
-    public void setNameProvider(String nameProvider) {
-        this.nameProvider = nameProvider;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Provider provider = (Provider) o;
-        return Objects.equals(idProvider, provider.idProvider);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(idProvider);
-    }
-
-    @Override
-    public String toString() {
-        return "Provider{" +
-                "idProvider='" + idProvider + '\'' +
-                ", nameProvider='" + nameProvider + '\'' +
-                '}';
-    }
+    @NotBlank(message="dniProvider cant be blank")
+    private String dniProvider;
+    @NotBlank(message="phoneProvider cant be blank")
+    private String phoneProvider;
 }
