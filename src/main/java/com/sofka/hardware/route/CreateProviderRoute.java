@@ -15,13 +15,13 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 @Configuration
 public class CreateProviderRoute {
     @Bean
-    public RouterFunction<ServerResponse> create(CreateProviderUseCase createProviderUseCase){
+    public RouterFunction<ServerResponse> createProvider(CreateProviderUseCase createProviderUseCase){
         return route(POST("/create/provider").and(accept(MediaType.APPLICATION_JSON)),
                 request -> request.bodyToMono(ProviderDTO.class)
                         .flatMap(createProviderUseCase::createProvider)
-                        .flatMap(purveyorDTO -> ServerResponse.status(HttpStatus.CREATED)
+                        .flatMap(providerDTO -> ServerResponse.status(HttpStatus.CREATED)
                                 .contentType(MediaType.APPLICATION_JSON)
-                                .bodyValue(purveyorDTO))
+                                .bodyValue(providerDTO))
                         .onErrorResume(e -> ServerResponse.status(HttpStatus.BAD_REQUEST).build()));
     }
 }
