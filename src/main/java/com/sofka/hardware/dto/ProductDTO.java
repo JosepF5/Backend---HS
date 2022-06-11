@@ -1,0 +1,29 @@
+package com.sofka.hardware.dto;
+
+import com.sofka.hardware.collection.Provider;
+import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import javax.validation.constraints.NotBlank;
+
+@Data
+public class ProductDTO {
+
+    private String idProduct;
+    @NotBlank(message="nameProduct cant be blank")
+    private String nameProduct;
+    @NotBlank(message="amountProduct cant be blank")
+    private Integer amountProduct;
+    @NotBlank(message="minAmountProduct cant be blank")
+    private Integer minAmountProduct;
+    @NotBlank(message="maxAmountProduct cant be blank")
+    private Integer maxAmountProduct;
+    @NotBlank(message="providersProduct cant be blank")
+    private String providersProduct;
+    @NotBlank(message="descriptionProduct cant be blank")
+    private String descriptionProduct;
+    @NotBlank(message="priceProduct cant be blank")
+    private Long priceProduct;
+
+}
