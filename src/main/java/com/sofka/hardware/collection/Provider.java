@@ -15,7 +15,7 @@ public class Provider {
     @NotBlank(message="nameProvider cant be blank")
     private String nameProvider;
     @NotBlank(message="dniProvider cant be blank")
-    private String dniProvider;
+    private Integer dniProvider;
     @NotBlank(message="phoneProvider cant be blank")
-    private String phoneProvider;
+    private Integer phoneProvider;
 }

@@ -1,8 +1,8 @@
 package com.sofka.hardware.mapper;
 
 import com.sofka.hardware.dto.ProviderDTO;
+import com.sofka.hardware.collection.Provider;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.Provider;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.config.EnableWebFlux;
 
