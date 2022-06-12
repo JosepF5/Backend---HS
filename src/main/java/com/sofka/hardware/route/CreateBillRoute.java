@@ -25,7 +25,7 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 public class CreateBillRoute {
     @Bean
     @RouterOperation(path = "/create/bill", produces = {
-            MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.POST, beanClass = CreateBillUseCase.class, beanMethod = "apply",
+            MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.POST, beanClass = CreateBillUseCase.class, beanMethod = "createBill",
             operation = @Operation(operationId = "createBill", responses = {
                     @ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = Bill.class))),
                     @ApiResponse(responseCode = "400", description = "Invalid Bill details supplied")}
