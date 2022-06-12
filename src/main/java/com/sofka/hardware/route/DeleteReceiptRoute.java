@@ -1,7 +1,7 @@
 package com.sofka.hardware.route;
 
-import com.sofka.hardware.usecase.DeleteProductUseCase;
-import com.sofka.hardware.usecase.DeleteProductUseCase;
+import com.sofka.hardware.usecase.DeleteReceiptUseCase;
+import com.sofka.hardware.usecase.DeleteReceiptUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -21,19 +21,19 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 
 @Configuration
-public class DeleteProductRoute {
+public class DeleteReceiptRoute {
     @Bean
-    @RouterOperation(path = "/swagger-demo/product/{id}", produces = {
-            MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.DELETE, beanClass = DeleteProductUseCase.class, beanMethod = "deleteProduct"
-            , operation = @Operation(operationId = "deleteProduct", responses = {
+    @RouterOperation(path = "/swagger-demo/receipt/{id}", produces = {
+            MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.DELETE, beanClass = DeleteReceiptUseCase.class, beanMethod = "deleteReceipt"
+            , operation = @Operation(operationId = "deleteReceipt", responses = {
             @ApiResponse(responseCode = "200", description = "successful operation", content = @Content(mediaType = "Boolean")),
-            @ApiResponse(responseCode = "400", description = "Invalid Product ID supplied"),
-            @ApiResponse(responseCode = "404", description = "Product not found")}, parameters = {
+            @ApiResponse(responseCode = "400", description = "Invalid Receipt ID supplied"),
+            @ApiResponse(responseCode = "404", description = "Receipt not found")}, parameters = {
             @Parameter(in = ParameterIn.PATH, name = "id")}
     ))
-    public RouterFunction<ServerResponse> deleteProduct(DeleteProductUseCase deleteProductUseCase){
-        return route(DELETE("/delete/product/{id}").and(accept(MediaType.APPLICATION_JSON)),
-                request -> deleteProductUseCase.deleteProduct(request.pathVariable("id"))
+    public RouterFunction<ServerResponse> deleteReceipt(DeleteReceiptUseCase deleteReceiptUseCase){
+        return route(DELETE("/delete/receipt/{id}").and(accept(MediaType.APPLICATION_JSON)),
+                request -> deleteReceiptUseCase.deleteReceipt(request.pathVariable("id"))
                         .flatMap((p)-> ServerResponse.status(HttpStatus.ACCEPTED).build())
                         .onErrorResume(e -> ServerResponse.status(HttpStatus.NOT_FOUND).build()));
     }

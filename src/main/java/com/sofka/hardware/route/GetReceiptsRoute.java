@@ -1,9 +1,9 @@
 package com.sofka.hardware.route;
 
-import com.sofka.hardware.collection.Product;
-import com.sofka.hardware.dto.ProductDTO;
-import com.sofka.hardware.usecase.GetProductsUseCase;
-import com.sofka.hardware.usecase.GetProductsUseCase;
+import com.sofka.hardware.collection.Receipt;
+import com.sofka.hardware.dto.ReceiptDTO;
+import com.sofka.hardware.usecase.GetReceiptsUseCase;
+import com.sofka.hardware.usecase.GetReceiptsUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -22,18 +22,18 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 
 @Configuration
-public class GetProductsRoute {
+public class GetReceiptsRoute {
     @Bean
-    @RouterOperation(path = "/get/products", produces = {
+    @RouterOperation(path = "/get/receipts", produces = {
             MediaType.APPLICATION_JSON_VALUE},
-            beanClass = GetProductsUseCase.class, method = RequestMethod.GET, beanMethod = "getProducts",
-            operation = @Operation(operationId = "getProducts", responses = {
+            beanClass = GetReceiptsUseCase.class, method = RequestMethod.GET, beanMethod = "getReceipts",
+            operation = @Operation(operationId = "getReceipts", responses = {
                     @ApiResponse(responseCode = "200", description = "successful operation",
-                            content = @Content(schema = @Schema(implementation = Product.class)))}
+                            content = @Content(schema = @Schema(implementation = Receipt.class)))}
             ))
-    public RouterFunction<ServerResponse> getProducts(GetProductsUseCase getProductsUseCase){
-        return route(GET("/get/products"), request -> ServerResponse.status(HttpStatus.OK)
+    public RouterFunction<ServerResponse> getReceipts(GetReceiptsUseCase getReceiptsUseCase){
+        return route(GET("/get/receipts"), request -> ServerResponse.status(HttpStatus.OK)
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(BodyInserters.fromProducer(getProductsUseCase.getProducts(), ProductDTO.class)));
+                .body(BodyInserters.fromProducer(getReceiptsUseCase.getReceipts(), ReceiptDTO.class)));
     }
 }
