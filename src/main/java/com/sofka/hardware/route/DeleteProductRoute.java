@@ -23,7 +23,7 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 @Configuration
 public class DeleteProductRoute {
     @Bean
-    @RouterOperation(path = "/swagger-demo/product/{id}", produces = {
+    @RouterOperation(path = "/delete/product/{id}", produces = {
             MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.DELETE, beanClass = DeleteProductUseCase.class, beanMethod = "deleteProduct"
             , operation = @Operation(operationId = "deleteProduct", responses = {
             @ApiResponse(responseCode = "200", description = "successful operation", content = @Content(mediaType = "Boolean")),
