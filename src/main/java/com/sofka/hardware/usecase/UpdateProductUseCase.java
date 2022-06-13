@@ -14,10 +14,10 @@ public class UpdateProductUseCase {
     private final ProductMapper productMapper;
 
     public Mono<ProductDTO> updateProduct(String id,ProductDTO productDTO) {
-        return productRepository.findById(id).flatMap(patient -> {
-            productDTO.setIdProduct(patient.getIdProduct());
+        return productRepository.findById(id).flatMap(product -> {
+            productDTO.setIdProduct(product.getIdProduct());
             return productRepository.save(productMapper.toProductEntity(productDTO))
-                    .map(patientRes -> productMapper.toProductDto(patientRes));
+                    .map(productRes -> productMapper.toProductDto(productRes));
         }).switchIfEmpty(Mono.just(new ProductDTO()));
     }
 }

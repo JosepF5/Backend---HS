@@ -45,7 +45,7 @@ public class UpdateProductRoute {
         return route(PUT("/update/product/{id}").and(accept(MediaType.APPLICATION_JSON)),
                 request -> request.bodyToMono(ProductDTO.class)
                         .flatMap(productDTO -> updateProductUseCase.updateProduct(request.pathVariable("id"),productDTO))
-                        .flatMap(result -> result.getNameProduct()!=null
+                        .flatMap(result -> result.getIdProduct()!=null
                         ? ServerResponse.status(HttpStatus.CREATED)
                         .contentType(MediaType.APPLICATION_JSON)
                         .bodyValue(result)
