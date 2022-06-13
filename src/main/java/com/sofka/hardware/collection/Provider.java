@@ -1,5 +1,6 @@
 package com.sofka.hardware.collection;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -18,4 +19,6 @@ public class Provider {
     private Integer dniProvider;
     @NotBlank(message="phoneProvider cant be blank")
     private Integer phoneProvider;
+
+
 }
